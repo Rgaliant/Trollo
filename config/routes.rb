@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
   devise_for :views
-  devise_for :users
+  
 
   root 'boards#index'
 
-  resources :boards do
-    resources :cards
+  devise_for :users do
+    resources :boards
   end
 
-  resources :cards do
-    resources :lists
+  resources :boards, shallow: true do
+    resources :lists, shallow: true do
+      resources :cards
+    end
   end
 
 end

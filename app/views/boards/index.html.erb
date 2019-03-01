@@ -1,2 +1,36 @@
-<h1>Boards#index</h1>
-<p>Find me in app/views/boards/index.html.erb</p>
+<% @my_colors = ["#fffccc", "#ffaaee", "#ccccee", "#ccffcc"]%>
+
+
+
+<h1> Boards </h1>
+<div class="ui tiny labeled icon menu">
+  <div class="item">
+    <i class="plus icon"></i>
+    <%= link_to "New Board", new_board_path %>
+  </div>
+  <a class="item">
+    <i class="video camera icon"></i>
+    Channels
+  </a>
+  <a class="item">
+    <i class="video play icon"></i>
+    Videos
+  </a>
+</div>
+<div class="ui cards">
+<% @boards.each do |board| %>
+  <div class="ui card" style="background-color:<%= @my_colors.sample %>">
+    <div class="content">
+      <a class="description">
+        <%= link_to board.title, board_path(board) %>
+      </a>
+    </div>
+    <br />
+    <br />
+  </div>
+  <% end %>
+</div>
+
+
+
+
