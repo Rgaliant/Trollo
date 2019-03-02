@@ -46,6 +46,6 @@ before_action :set_board, only: [:show, :edit, :update]
   end
 
   def board_params
-    params.require(:board).permit(:title)
+    params.require(:board).permit(:title, :favorite)
   end
 end

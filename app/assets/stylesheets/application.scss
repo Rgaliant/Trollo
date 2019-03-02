@@ -1,1 +1,30 @@
 @import 'semantic-ui';
+
+body {
+  background-image: url(https://images.unsplash.com/photo-1551334787-21e6bd3ab135?ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80);
+  background-size:     cover;                      
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.my-navi {
+  opacity: 0.7;
+}
+
+.show-meni {
+  opacity: 0.6;
+  margin-left: 0px;
+}
+
+.me-cards {
+  opacity: 0.6;
+}
+
+.card-opa {
+  opacity: 1;
+}
+
+.ui.inverted.grey.menu {
+  background-color: #313639;
+}
+

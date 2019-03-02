@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lists = @board.lists.all
+    @lists = @board.lists.order(:title)
   end
 
   def show
@@ -17,7 +17,7 @@ class ListsController < ApplicationController
     @list = @board.lists.create(list_params)
 
     if @list.save 
-      redirect_to board_path(@board)
+      redirect_to @list.board
     else
       render :new
     end
@@ -28,7 +28,7 @@ class ListsController < ApplicationController
 
   def update
     if @list.update(list_params)
-      redirect_to root_path
+      redirect_to @list.board
     else
       render :edit
     end
@@ -52,7 +52,7 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:title)
+    params.require(:list).permit(:title, :favorite)
   end
 
   

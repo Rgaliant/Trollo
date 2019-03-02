@@ -1,54 +1,82 @@
 <% @my_colors = ["#fffccc", "#ffaaee", "#ccccee", "#ccffcc"]%>
+<br />
 
-<h1>Boards#show</h1>
-
-<div class="ui container" style="background-color:<%= @my_colors.sample %>">
-  <div class="ui labeled icon menu">
-    <div class="item">
-      <h1><%= @board.title %> 
-    </div>
-    <div class="ui item">
-      <i class="ui star outline icon"></i>
-    </div>
-    <div class="ui item">
-      <%= link_to @board, method: :delete do %>
-        <i class="ui trash red icon huge"></i>
+<div class="ui container" >
+  <div class="show-meni">
+    <div class="ui grey inverted labeled icon menu">
+      <div class="item">
+        <h3><%= @board.title %> </h3>
+      </div>
+      <div class="ui item">
+      <% if @board.favorite %>
+        <i class="ui yellow star icon"></i>
+      <% else %>
+        <i class="ui star outline icon"></i>
       <% end %>
-    </div>
-    <div class="ui item">
-    <%= link_to new_board_list_path(@board) do %>
-    <i class="ui plus icon huge"></i>
-    <% end %>
+      </div>
+      <div class="ui item">
+        <%= link_to @board, method: :delete do %>
+          <i class="ui right floated trash red icon big"></i>
+        <% end %>
+      </div>
+      <div class="ui item">
+        <%= link_to edit_board_path(@board) do %>
+          <i class="ui right floated blue pencil icon big"></i>
+        <% end %>
+      </div>
+      <div class="ui item">
+      <%= link_to new_board_list_path(@board) do %>
+      <i class="ui right floated plus icon big"></i>
+      <% end %>
+      </div>
     </div>
   </div>
-  <div class="ui cards">
-    <% @board.lists.each do |list| %>
-      <div class="ui centered card">
-        <div class="content">
-          <div class="header">
-            <%= link_to list.title, board_lists_path(@board) %> 
-            <%= link_to 'Delete', list, method: :delete %>
-          </div>
-          <div class="meta">
-            <%= list.created_at %>
-          </div>
-          <div class="description">
-            <% list.cards.each do |card| %>
-            <div class="ui segment">
-            <%= card.title %>
-            <%= link_to [@list, card], method: :delete do %>
-              <i class="ui trash icon"></i>
-            <% end %>
+  <br />
+  <div class="me-cards">
+    <div class="ui four cards">
+      <% @board.lists.each do |list| %>
+        <div class="ui centered card" style="background-color: #313639">
+          <div class="content">
+            <div class="header" style="color: white">
+              <%= list.title %> |
+                <% if list.favorite %>
+                  <i class="ui yellow star icon"></i> |
+                <% else %>
+                <% end %>
+              <%= link_to list, method: :delete do %> 
+                <i class="ui red trash icon"></i>
+              <% end%>
+              <%= link_to edit_board_list_path(@board, list) do %>
+                <i class="ui blue pencil icon"></i>
+              <% end%>
+              
             </div>
-            <% end %>
-            <div class="ui segment">
-              <%= link_to '+ Add a Card', new_list_card_path(list, @card) %>
+            <div class="meta" style="color: white">
+              Created at: <%= list.created_at %>
+            </div>
+            <div class="description">
+              <% list.cards.each do |card| %>
+              <div class="card-opa">
+                <div class="ui raised segment">
+                <strong><%= card.title %></strong>
+                <%= link_to [@list, card], method: :delete do %>
+                  <i class="ui right floated trash icon"></i>
+                <% end %>
+                </div>
+              </div>
+              <% end %>
+              <div class="ui segment">
+                <%= link_to new_list_card_path(list, @card) do %>
+                  <i class="ui plus icon"></i>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
-   
+      <% end %>
+    
+    </div>
+    
   </div>
 </div>
 

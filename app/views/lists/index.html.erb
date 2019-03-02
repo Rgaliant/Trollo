@@ -5,7 +5,7 @@
 <div class="ui centered card">
         <div class="content">
           <div class="header">
-            <%= link_to list.title, list_path(list) %> 
+            <%= link_to list.title, board_list_path(@board, list) %> 
           </div>
           <div class="meta">
             <%= list.created_at %>
@@ -20,7 +20,9 @@
             </div>
             <% end %>
             <div class="ui segment">
-              <%= link_to '+ Add a Card', new_list_card_path(list, @card) %>
+              <%= link_to new_list_card_path(list, @card) do %>
+                <i class="ui big plus icon"></i>
+              <% end %>
             </div>
           </div>
         </div>

@@ -4,5 +4,9 @@
     <%= f.label :title %>
     <%= f.text_field :title, required: true, placeholder: "title" %>
   </div>
+  <div class="field">
+    <%= f.label :favorite %>
+    <%= f.check_box :favorite %>
+  </div>
   <%= f.submit %>
 <% end %>

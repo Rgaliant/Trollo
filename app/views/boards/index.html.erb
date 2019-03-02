@@ -1,35 +1,48 @@
 <% @my_colors = ["#fffccc", "#ffaaee", "#ccccee", "#ccffcc"]%>
+<br />
 
-
-
-<h1> Boards </h1>
-<div class="ui tiny labeled icon menu">
-  <div class="item">
-    <i class="plus icon"></i>
-    <%= link_to "New Board", new_board_path %>
-  </div>
-  <a class="item">
-    <i class="video camera icon"></i>
-    Channels
-  </a>
-  <a class="item">
-    <i class="video play icon"></i>
-    Videos
-  </a>
-</div>
+  <h2 style="color:#ffffff"> Your Favorite Boards </h2>
 <div class="ui cards">
-<% @boards.each do |board| %>
-  <div class="ui card" style="background-color:<%= @my_colors.sample %>">
-    <div class="content">
-      <a class="description">
-        <%= link_to board.title, board_path(board) %>
-      </a>
+  <% @boards.each do |board| %>
+    <% if board.favorite == true %>
+
+    <div class="ui card" style="background-color:<%= @my_colors.sample %>">
+      <div class="content">
+        <a class="description">
+          <h3><%= link_to board.title, board_path(board) %> <i class="ui yellow star icon"></i></h3> 
+            
+        </a>
+      </div>
+      <br />
+      <br />
     </div>
-    <br />
-    <br />
-  </div>
+    <% end%>
   <% end %>
 </div>
+
+
+  <h2 style="color:#ffffff"> Your Boards </h2>
+  <div class="ui cards">
+    <% @boards.each do |board| %>
+      <% if board.favorite != true %>
+      <div class="ui card" style="background-color:<%= @my_colors.sample %>">
+        <div class="content">
+          <a class="description">
+            <h3><%= link_to board.title, board_path(board) %></h3>
+          </a>
+        </div>
+        <br />
+        <br />
+      </div>
+      <% end%>
+    <% end %>
+    <div class="ui card">
+      <div class="content">
+        <h3><%= link_to 'Create a new Board...', new_board_path %></h3>
+      </div>
+    </div>
+  </div>
+
 
 
 
