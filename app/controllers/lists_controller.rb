@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lists = @board.lists.order(:title)
+    @lists = @board.lists.order(:id)
   end
 
   def show

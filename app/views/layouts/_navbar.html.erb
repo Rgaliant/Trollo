@@ -1,31 +1,32 @@
 <div class="my-navi">
   <div class="ui grey inverted labled icon menu">
     <div class="ui item">
-    <img src="https://pbs.twimg.com/profile_images/547434037380272128/DsOlWauL_400x400.png">
+      <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/trello-logo.png">
     </div>
     <div class="ui item">
       <%= link_to root_path do %>
-      <i class="ui building outline icon"></i>
+        <i class="ui building outline icon"></i>
       <% end %>
     </div>
     <div class="ui item">
       <%= link_to root_path do %>
-      <i class="tasks icon"></i>
+        <i class="tasks icon"></i>
       <% end %>
     </div>
-    <a class="item">
-      <div class="ui icon input">
-        <input type="text" placeholder="Search...">
-        <i class="search icon"></i>
-      </div>
+      <a class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search...">
+            <i class="search icon"></i>
+        </div>
+      </a>
       <div class="right menu">
-      <% if current_user %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "ui item" %>
-      <% else %>
-        <%= link_to "Register", new_user_registration_path, class: "item" %>
-        <%= link_to "Login", new_user_session_path, class: "item" %>
-      <% end %>
+        <% if current_user %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "ui item" %>
+        <% else %>
+          <%= link_to "Register", new_user_registration_path, class: "item" %>
+          <%= link_to "Login", new_user_session_path, class: "item" %>
+        <% end %>
+      </div>
+      
     </div>
-    </a>
-  </div>
 </div>

@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is intended to practice Ruby on Rails. Devise was used for User Authentication. Front-end styling done with Semantic UI and custom CSS.
 
-Things you may want to cover:
+* Download/Clone app 
 
-* Ruby version
+* Bundle Install
 
-* System dependencies
+* Run 'rails s' from the command line
 
-* Configuration
+* Navigate to Localhost:3000
 
-* Database creation
+* Test Login Creds: 
+  Email: test@test.com
+  Password: password
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Created by Ryan Gale for DevPoint Labs
